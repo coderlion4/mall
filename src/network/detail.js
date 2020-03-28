@@ -46,4 +46,3 @@ export class GoodsParam {
     this.sizes = rule.tables;
   }
 }
-
