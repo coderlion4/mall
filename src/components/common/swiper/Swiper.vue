@@ -47,6 +47,7 @@
     },
     methods: {
       /**
+       * 接口
        * 外界父组件通过$refs.swiper.swiperStart()来启动轮播
        */
       swiperStart() {
