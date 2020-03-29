@@ -1,6 +1,9 @@
 import {
   ADD_COUNTER,
-  ADD_TO_CART
+  SUB_COUNTER,
+  CHANGE_COUNTER,
+  ADD_TO_CART,
+  FROM_CART_DEL
 } from "./mutation-types";
 
 export default {
@@ -21,5 +24,55 @@ export default {
         resolve("已添加至购物车");
       }
     });
+  },
+  delCart({ state, commit }, payload) {
+    return new Promise((resolve, reject) => {
+      let oldProductIndex = state.cartList.findIndex(item => item.iid === payload.iid);
+
+      if (oldProductIndex !== -1) {
+        commit(FROM_CART_DEL, oldProductIndex);
+        resolve("商品已从购物车中删除");
+      }
+    })
+  },
+  addCount({ state, commit }, payload) {
+    return new Promise((resolve, reject) => {
+      if (payload.count < 200) {
+        commit(ADD_COUNTER, payload);
+        resolve("商品数量+1");
+      } else {
+        reject("最多只能买200件哦!");
+      }
+    })
+  },
+  subCount({ state, commit }, payload) {
+    return new Promise((resolve, reject) => {
+      if (payload.count > 1) {
+        commit(SUB_COUNTER, payload);
+        resolve("商品数量-1");
+      } else {
+        reject("最少只能买一件哦!");
+      }
+    })
+  },
+  changeCount({ state, commit }, payload) {
+    return new Promise((resolve, reject) => {
+      let reg = /\D/g;
+      let value = payload.value;
+      if (value.search(reg) === -1) {
+        if (value > 200) {
+          commit(CHANGE_COUNTER, {
+            "cartList": payload.cartList,
+            "value": 200
+          });
+          reject("最多只能买200件哦!");
+        } else {
+          commit(CHANGE_COUNTER, payload);
+          resolve("修改成功!");
+        }
+      } else {
+        reject("输入的金额不对哦!");
+      }
+    })
   }
 }
