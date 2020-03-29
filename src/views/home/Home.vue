@@ -151,12 +151,8 @@
   }
 
   .home-nav {
-    /* position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 9; */
     color: #fff;
+    font-weight: bold;
     background-color: var(--color-tint);
   }
 
