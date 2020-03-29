@@ -39,5 +39,6 @@
   .nav-bar {
     background: var(--color-tint);
     color: #fff;
+    font-weight: bold;
   }
 </style>
