@@ -22,7 +22,10 @@
     },
     computed: {
       showImage() {
-        return (this.goodsItem.image || this.goodsItem.show.img);
+        if (this.goodsItem.image) return this.goodsItem.image;
+        if (this.goodsItem.show && this.goodsItem.show.img) return this.goodsItem.show.img;
+        if (this.goodsItem.img) return this.goodsItem.img;
+        return "";
       }
     },
     methods: {
