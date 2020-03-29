@@ -3,16 +3,24 @@
     <keep-alive exclude="Detail">
       <router-view />
     </keep-alive>
-    <main-tab-bar></main-tab-bar>
+    <main-tab-bar />
+    <icon />
+    <svg-icon />
   </div>
 </template>
 
 <script>
   import MainTabBar from "components/content/maintabbar/MainTabBar";
+  import Icon from "components/content/icon/Icon";
+  import SvgIcon from "components/content/icon/SvgIcon";
+
   export default {
     name: 'App',
     components: {
-      MainTabBar
+      MainTabBar,
+
+      Icon,
+      SvgIcon
     }
   }
 </script>
