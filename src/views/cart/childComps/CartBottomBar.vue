@@ -18,7 +18,7 @@
 <script>
   import CheckButton from "components/content/checkButton/CheckButton";
 
-  import { mapGetters } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
 
   export default {
     name: "CartBottomBar",
@@ -45,20 +45,19 @@
       }
     },
     methods: {
+      ...mapActions([
+        "clearCart"
+      ]),
       selectAllClick() {
         const isAll = this.isSelectAll;
         this.cartList.forEach(item => item.checked = !isAll);
       },
       balanceClick() {
-        if (!this.isSelectAll) {
-          if (!this.cartLength) {
-            this.$toast.show("购物车为空，快去添加商品吧");
-          } else {
-            this.$toast.show("您还没有选择商品哦");
-          }
-        } else {
-          this.$toast.show("购买成功");
-        }
+        this.clearCart(this.isSelectAll).then(res => {
+          this.$toast.show(res);
+        }, err => {
+          this.$toast.show(err);
+        });
       }
     }
   };
