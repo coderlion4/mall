@@ -3,7 +3,8 @@ import {
   SUB_COUNTER,
   CHANGE_COUNTER,
   ADD_TO_CART,
-  FROM_CART_DEL
+  FROM_CART_DEL,
+  CLEAR_CART
 } from "./mutation-types";
 
 export default {
@@ -72,6 +73,20 @@ export default {
         }
       } else {
         reject("输入的金额不对哦!");
+      }
+    })
+  },
+  clearCart({ state, commit }, payload) {
+    return new Promise((resolve, reject) => {
+      if (!payload) {
+        if (!state.cartList.length) {
+          reject("购物车为空，快去添加商品吧!");
+        } else {
+          reject("您还没有选择商品哦!");
+        }
+      } else {
+        commit(CLEAR_CART);
+        resolve("购买成功!");
       }
     })
   }

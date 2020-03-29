@@ -4,6 +4,7 @@ import {
   CHANGE_COUNTER,
   ADD_TO_CART,
   FROM_CART_DEL,
+  CLEAR_CART
 } from "./mutation-types";
 
 export default {
@@ -22,5 +23,8 @@ export default {
   [FROM_CART_DEL](state, payload) {
     // payload is Array the index
     state.cartList.splice(payload, 1);
+  },
+  [CLEAR_CART](state) {
+    state.cartList.splice(state.cartList);
   }
 }
