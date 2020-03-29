@@ -169,7 +169,6 @@
         // 添加到购物车
         this.addCart(product).then(res => {
           this.$toast.show(res);
-
         });
       }
     }
