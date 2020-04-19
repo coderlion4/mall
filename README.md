@@ -46,9 +46,9 @@ npm run build  // 项目打包
 ### 页面欣赏
 
 ##### 首页
-![avatar](./projectImage/IMG_1004.png)
+![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1004.PNG)
 
-![avatar](./projectImage/IMG_1005.png)
+![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1005.PNG)
 
 ##### 详情页
 
