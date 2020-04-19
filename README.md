@@ -7,7 +7,7 @@
 > [在线演示地址](http://www.itzjh.cn)
 
 > 联系作者
-> ![image](https://github.com/jrzjh4/mall/blob/master/projectImage/code.jpg)
+> ![image](https://github.com/jrzjh4/mall/blob/master/projectImage/code.JPG)
 
 ### 免责声明
 
