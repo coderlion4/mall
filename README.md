@@ -7,7 +7,7 @@
 > [在线演示地址](http://www.itzjh.cn)
 
 > 联系作者
-> ![avatar](./projectImage/code.jpg)
+> ![image](https://github.com/jrzjh4/mall/blob/master/projectImage/code.jpg)
 
 ### 免责声明
 
@@ -52,21 +52,21 @@ npm run build  // 项目打包
 
 ##### 详情页
 
-![avatar](./projectImage/IMG_1006.png)
+![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1006.PNG)
 
 ##### 分类
 
-![avatar](./projectImage/IMG_1007.png)
+![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1007.PNG)
 
-![avatar](./projectImage/IMG_1008.png)
+![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1008.PNG)
 
 ##### 购物车
 
-![avatar](./projectImage/IMG_1009.png)
+![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1009.PNG)
 
 ##### 我的
 
-![avatar](./projectImage/IMG_1010.png)
+![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1010.PNG)
 
 ### 更新说明
 
