@@ -44,14 +44,9 @@
         categories: [],
         categoryData: {},
         currentIndex: -1,
+        saveY: 0,
         categoryHeight: window.innerHeight + "px"
       }
-    },
-    mounted() {
-      this._getCategory();
-
-      // 解决移动端工具栏显示/隐藏时高度bug
-      window.addEventListener("resize", this.getCategoryHeight);
     },
     computed: {
       showSubcategory() {
@@ -62,6 +57,21 @@
         if (this.currentIndex === -1) return [];
         return this.categoryData[this.currentIndex].categoryDetail[this.currentType];
       }
+    },
+    mounted() {
+      this._getCategory();
+
+      // 解决移动端工具栏显示/隐藏时高度bug
+      window.addEventListener("resize", this.getCategoryHeight);
+    },
+    activated() {
+      // 回到路由时回到上次的位置
+      this.$refs.scroll.scrollTo(0, this.saveY, 0);
+      this.$refs.scroll.refresh();
+    },
+    deactivated() {
+      // 离开路由时保存scroll的y值
+      this.saveY = this.$refs.scroll.getScrollY();
     },
     methods: {
 
