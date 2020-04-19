@@ -50,15 +50,30 @@
 
     },
     methods: {
+      /**
+       * 设置跳转位置
+       */
       scrollTo(x, y, time = 300) {
         this.scroll && this.scroll.scrollTo && this.scroll.scrollTo(x, y, time);
       },
+
+      /**
+       * 刷新底部上拉事件
+       */
       finishPullUp() {
         this.scroll && this.scroll.finishPullUp && this.scroll.finishPullUp();
       },
+
+      /**
+       * 刷新scroll可滚动高度
+       */
       refresh() {
         this.scroll && this.scroll.refresh && this.scroll.refresh();
       },
+
+      /**
+       * 获取当前scroll的y值
+       */
       getScrollY() {
         return this.scroll.y ? this.scroll.y : 0;
       }
@@ -67,6 +82,4 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
+<style scoped></style>

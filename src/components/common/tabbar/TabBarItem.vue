@@ -13,46 +13,49 @@
 </template>
 
 <script>
-export default {
-  name: "TabBarItem",
-  props: {
-    path: String,
-    activeColor: {
-      type: String,
-      default: "red"
-    }
-  },
-  computed: {
-    isActive() {
-      return this.$route.path.indexOf(this.path) !== -1;
+  export default {
+    name: "TabBarItem",
+    props: {
+      path: String,
+      activeColor: {
+        type: String,
+        default: "red"
+      }
     },
-    activeStyle() {
-      return this.isActive ? { color: this.activeColor } : {};
-    }
-  },
-  methods: {
-    itemClick() {
-      if (this.path != this.$route.path) {
-        this.$router.replace(this.path);
+    computed: {
+      isActive() {
+        return this.$route.path.indexOf(this.path) !== -1;
+      },
+      activeStyle() {
+        return this.isActive ? { color: this.activeColor } : {};
+      }
+    },
+    methods: {
+      /**
+       * 根据点击不同的item切换路由
+       */
+      itemClick() {
+        if (!this.isActive) {
+          this.$router.replace(this.path);
+        }
       }
     }
-  }
-};
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.tab-bar-item {
-  flex: 1;
-  height: 49px;
-  text-align: center;
-}
+  .tab-bar-item {
+    flex: 1;
+    height: 49px;
+    text-align: center;
+  }
 
-.tab-bar-item img {
-  width: 24px;
-  height: 24px;
-  margin-top: 3px;
-  vertical-align: middle;
-  margin-bottom: 2px;
-}
+  .tab-bar-item img {
+    width: 24px;
+    height: 24px;
+    margin-top: 3px;
+    vertical-align: middle;
+    margin-bottom: 2px;
+  }
 </style>

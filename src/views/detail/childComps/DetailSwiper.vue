@@ -14,9 +14,7 @@
     props: {
       topImages: {
         type: Array,
-        default() {
-          return []
-        }
+        default: () => []
       }
     },
     data() {
@@ -29,17 +27,20 @@
       Swiper,
       SwiperItem
     },
+    watch: {
+      topImages() {
+        this.imagesLength = this.topImages.length;
+      }
+    },
     methods: {
+      /**
+       * 监听banners中图片加载完成之后启动轮播图
+       */
       DetailImageLoad() {
         this.imagesCount++;
         if (this.imagesCount === this.imagesLength) {
           this.$refs.swiper && this.$refs.swiper.swiperStart();
         }
-      }
-    },
-    watch: {
-      topImages() {
-        this.imagesLength = this.topImages.length;
       }
     }
   }

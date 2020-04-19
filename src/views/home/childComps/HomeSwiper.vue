@@ -2,7 +2,7 @@
   <swiper ref="swiper" :showIndicator="false">
     <swiper-item v-for="(item, index) in banners" :key="index">
       <a :href="item.link">
-        <img :src=" item.image" alt="" @load="imageLoad">
+        <img :src="item.image" alt="" @load="imageLoad">
       </a>
     </swiper-item>
   </swiper>
@@ -25,12 +25,20 @@
     props: {
       banners: {
         type: Array,
-        default() {
-          return [];
-        }
+        default: () => []
+      }
+    },
+    watch: {
+      banners() {
+        this.imagesLength = this.banners.length;
       }
     },
     methods: {
+      /**
+       * 监听homeSwiperImageLoad图片加载完成
+       * 发送swiperImageLoad事件, 获取backTop的offsetTop
+       * 启动轮播图
+       */
       imageLoad() {
         this.imagesCount++;
         if (this.imagesCount === 1) {
@@ -39,16 +47,9 @@
           this.$refs.swiper.swiperStart();
         }
       }
-    },
-    watch: {
-      banners() {
-        this.imagesLength = this.banners.length;
-      }
     }
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
+<style scoped></style>

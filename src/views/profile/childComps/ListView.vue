@@ -17,9 +17,7 @@
     props: {
       listData: {
         type: Array,
-        default: function () {
-          return []
-        }
+        default: () => []
       }
     }
   };

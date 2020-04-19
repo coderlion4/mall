@@ -30,17 +30,20 @@
         }
       }
     },
-    methods: {
-      imageLoad() {
-        this.$emit("detailImageLoad");
-      }
-    },
     watch: {
       detailInfo() {
         const images = this.detailInfo.detailImage;
         if (images.length > 1 && images[1].list) {
           images[images.length - 1].list.push(images[0].list.splice(-1, 1)[0]);
         }
+      }
+    },
+    methods: {
+      /**
+       * 监听detailGoodsInfo中图片加载完成, 并发送事件detailGoodsInfoImageLoad
+       */
+      imageLoad() {
+        this.$emit("detailImageLoad");
       }
     }
   }

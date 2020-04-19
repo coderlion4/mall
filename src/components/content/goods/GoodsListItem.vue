@@ -21,6 +21,9 @@
       }
     },
     computed: {
+      /**
+       * 根据不同的数据渲染图片
+       */
       showImage() {
         if (this.goodsItem.image) return this.goodsItem.image;
         if (this.goodsItem.show && this.goodsItem.show.img) return this.goodsItem.show.img;
@@ -29,9 +32,18 @@
       }
     },
     methods: {
+      /**
+       * 监听goodsListItem图片加载完成事件
+       * 将图片加载完成事件发送到事件总线
+       */
       imageLoad() {
         this.$bus.$emit("itemImageLoad");
       },
+
+      /**
+       * 监听商品点击
+       * 跳转到详情页
+       */
       itemClick() {
         this.$router.push("/detail/" + (this.goodsItem.item_id || this.goodsItem.iid));
       }

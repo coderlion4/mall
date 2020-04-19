@@ -30,9 +30,16 @@ export const backTopMixin = {
     }
   },
   methods: {
+    /**
+     * 回到顶部
+     */
     backTop() {
       this.$refs.scroll.scrollTo(0, 0);
     },
+
+    /**
+     * 显示/隐藏BackTop
+     */
     listenerShowBackTop(positionY) {
       this.isShowBackTop = Math.abs(positionY) >= BACK_POSITION;
     }

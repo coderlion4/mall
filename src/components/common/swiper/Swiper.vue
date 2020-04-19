@@ -5,7 +5,7 @@
     </div>
     <div class="indicator" v-if="showIndicator && slideCount > 1">
       <slot name="indicator">
-        <span v-for="(item, index) in slideCount" class="indi-item" :class="{active: index + 1 === currentIndex}"
+        <span class="indi-item" :class="{active: index + 1 === currentIndex}" v-for="(item, index) in slideCount"
           :key="index"></span>
       </slot>
     </div>
@@ -14,7 +14,7 @@
 
 <script>
   export default {
-    name: 'Swiper',
+    name: "Swiper",
     props: {
       interval: {
         type: Number,
@@ -35,27 +35,31 @@
     },
     data() {
       return {
-        slideCount: 0, // 元素个数
-        totalWidth: 0, // swiper的宽度
-        swiperStyle: {}, // swiper样式
-        currentIndex: 1, // 当前的index
-        scrolling: false, // 是否正在滚动
+        slideCount: 0,
+        totalWidth: 0,
+        swiperStyle: {},
+        currentIndex: 1,
+        scrolling: false
       }
     },
     mounted() {
-      window.onresize = this.getTotalWidth;
+      window.addEventListener("resize", this.getTotalWidth);
     },
     methods: {
       /**
-       * 接口
-       * 外界父组件通过$refs.swiper.swiperStart()来启动轮播
+       * swiper接口
+       * 通过$refs.swiper.swiperStart()来启动轮播图
        */
       swiperStart() {
         setTimeout(() => {
-          this.handleDom(); // 操作dom
-          this.startTimer();  // 开启定时器
-        }, 100)
+          this.handleDom();
+          this.startTimer();
+        }, 100);
       },
+
+      /**
+       * 在第一个和最后一个位置分别插入最后一张图片, 第一张图片
+       */
       handleDom() {
         let swiperEl = document.querySelector(".swiper");
         let swiperEls = swiperEl.getElementsByClassName("slide");
@@ -68,10 +72,13 @@
           swiperEl.appendChild(cloneFirst);
           this.totalWidth = swiperEl.offsetWidth;
           this.swiperStyle = swiperEl.style;
+          this.setTransform(-this.totalWidth);
         }
-        this.setTransform(-this.totalWidth);
       },
 
+      /**
+       * 启动轮播
+       */
       startTimer() {
         this.playTimer = setInterval(() => {
           this.currentIndex++;
@@ -79,12 +86,18 @@
         }, this.interval);
       },
 
+      /**
+       * 改变图片
+       */
       setTransform(position) {
         this.swiperStyle.transform = "translateX(" + position + "px)";
         this.swiperStyle["-webkit-transform"] = "translateX(" + position + "px)";
-        this.swiperStyle["-ms-transfor"] = "translateX(" + position + "px)";
+        this.swiperStyle["-ms-transform"] = "translateX(" + position + "px)";
       },
 
+      /**
+       * 改变图片的同时加上动画
+       */
       scrollContent(currentPosition) {
         this.scrolling = true;
         this.swiperStyle.transition = "transform " + this.animDuration + "ms";
@@ -93,9 +106,12 @@
         this.scrolling = false;
       },
 
+      /**
+       * 检查位置
+       */
       checkPosition(timeout) {
         setTimeout(() => {
-          this.swiperStyle.transition = '0ms';
+          this.swiperStyle.transition = "0ms";
           if (this.currentIndex > this.slideCount) {
             this.currentIndex = 1;
           } else if (this.currentIndex <= 0) {
@@ -105,12 +121,19 @@
         }, timeout);
       },
 
+      /**
+       * 手指触摸事件
+       */
       touchStart(e) {
-        if (this.scrolling) return;
-        this.stopTimer();
-        this.startX = e.touches[0].pageX;
+        if (!this.scrolling) {
+          this.stopTimer();
+          this.startX = e.touches[0].pageX;
+        }
       },
 
+      /**
+       * 手指移动事件
+       */
       touchMove(e) {
         this.currentX = e.touches[0].pageX;
         this.distance = this.currentX - this.startX;
@@ -119,29 +142,38 @@
         this.setTransform(moveDistance);
       },
 
-      touchEnd(e) {
+      /**
+       * 手指抬起事件
+       */
+      touchEnd() {
         let currentMove = Math.abs(this.distance);
-        if (currentMove === 0) {
-          return;
-        } else if (this.distance > 0 && currentMove >= this.totalWidth * this.moveRatio) {
-          this.currentIndex--;
-        } else if (this.distance < 0 && currentMove >= this.totalWidth * this.moveRatio) {
-          this.currentIndex++;
+        if (currentMove !== 0 && currentMove >= this.totalWidth * this.moveRatio) {
+          if (this.distance > 0) {
+            this.currentIndex--;
+          } else {
+            this.currentIndex++;
+          }
         }
         this.scrollContent(-this.currentIndex * this.totalWidth);
         this.startTimer();
       },
+
+      /**
+       * 停止轮播
+       */
       stopTimer() {
-        clearInterval(this.playTimer);
+        window.clearInterval(this.playTimer);
       },
 
+      /**
+       * 修正图片大小
+       */
       getTotalWidth() {
         this.totalWidth = window.innerWidth;
         this.checkPosition(0);
       }
     }
-
-  };
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -155,7 +187,6 @@
   .swiper {
     display: flex;
   }
-
 
   .indicator {
     position: absolute;

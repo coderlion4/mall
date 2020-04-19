@@ -13,9 +13,7 @@
     props: {
       titles: {
         type: Array,
-        default() {
-          return [];
-        }
+        default: () => []
       }
     },
     data() {

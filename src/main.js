@@ -9,6 +9,7 @@ import FastClick from "fastclick";
 
 import toast from "components/common/toast";
 
+import vhCheck from "vh-check";
 
 Vue.config.productionTip = false;
 
@@ -16,6 +17,9 @@ Vue.use(toast);
 
 // 解决移动端点击300ms延迟
 FastClick.attach(document.body);
+
+// 解决vh高度问题
+vhCheck();
 
 Vue.use(VueLazyLoad, {
   loading: require("./assets/img/common/placeholder.png")

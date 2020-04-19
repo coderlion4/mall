@@ -1,5 +1,5 @@
 <template>
-  <div id="category">
+  <div id="category" :style="{ height: categoryHeight }">
     <nav-bar class="nav-bar">
       <span slot="center">商品分类</span>
     </nav-bar>
@@ -27,7 +27,6 @@
   import { POP, SELL, NEW } from "common/const";
   import { tabControlMixin, itemListenerMixin } from "common/mixin";
 
-
   export default {
     name: "Category",
     components: {
@@ -44,11 +43,15 @@
       return {
         categories: [],
         categoryData: {},
-        currentIndex: -1
+        currentIndex: -1,
+        categoryHeight: window.innerHeight + "px"
       }
     },
     mounted() {
       this._getCategory();
+
+      // 解决移动端工具栏显示/隐藏时高度bug
+      window.addEventListener("resize", this.getCategoryHeight);
     },
     computed: {
       showSubcategory() {
@@ -61,6 +64,10 @@
       }
     },
     methods: {
+
+      /**
+       * 获取数据
+       */
       _getCategory() {
         getCategory().then(res => {
           // 1.获取分类数据
@@ -81,6 +88,10 @@
           this._getSubcategories(0);
         })
       },
+
+      /**
+       * 请求分类数据
+       */
       _getSubcategories(index) {
         this.currentIndex = index;
         const mailKey = this.categories[index].maitKey;
@@ -94,6 +105,10 @@
           this._getCategoryDetail(NEW);
         })
       },
+
+      /**
+       * 根据不同的类型获取数据
+       */
       _getCategoryDetail(type) {
         const miniWallkey = this.categories[this.currentIndex].miniWallkey;
         getCategoryDetail(miniWallkey, type).then(res => {
@@ -101,11 +116,23 @@
           this.categoryData = { ...this.categoryData };
         })
       },
+
       selectItem(index) {
         this._getSubcategories(index);
       },
-      tabClick() {
 
+      /**
+       * 解决移动端工具栏显示/隐藏时高度bug
+       * 
+       * Bug原因: 
+       * 设置home高度不能直接使用100%, 因为100%是相对与父元素, 而home的父元素的高度是依赖与home, 所以百分比无效
+       * 设置home高度不能使用100vh, 因为vh的高度计算是包含移动端的地址栏与工具栏的, 而当地址栏和工具栏显示\隐藏时会产生高度bug
+       * 
+       * 解决方案:
+       * 使用window.innerHeight动态设置高度: 当窗口大小改变时重新设置高度为window.innerHeight, 因为window.innerHeight的高度不包括地址栏和导航栏
+       */
+      getCategoryHeight() {
+        this.categoryHeight = window.innerHeight + "px";
       }
     }
   };
@@ -113,10 +140,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  #category {
-    height: 100vh;
-  }
-
   .nav-bar {
     background-color: var(--color-tint);
     font-weight: 700;
@@ -124,12 +147,12 @@
   }
 
   .content {
+    display: flex;
     position: absolute;
     left: 0;
     right: 0;
     top: 44px;
     bottom: 49px;
-    display: flex;
   }
 
   #tab-content {

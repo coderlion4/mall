@@ -2,8 +2,6 @@
  * 防抖
  */
 export function debounce(func, delay = 100) {
-  /* 闭包 */
-
   let timer = null;
   return function (...args) {
     clearTimeout(timer);

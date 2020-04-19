@@ -48,10 +48,18 @@
       ...mapActions([
         "clearCart"
       ]),
+
+      /**
+       * 全部选中/取消全部选中
+       */
       selectAllClick() {
         const isAll = this.isSelectAll;
         this.cartList.forEach(item => item.checked = !isAll);
       },
+
+      /**
+       * 结算
+       */
       balanceClick() {
         this.clearCart(this.isSelectAll).then(res => {
           this.$toast.show(res);

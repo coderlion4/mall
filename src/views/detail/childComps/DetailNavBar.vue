@@ -26,12 +26,19 @@
       }
     },
     methods: {
+      /**
+       * 监听标题点击, 修改相应的样式, 并且scroll到该标题对应位置
+       */
       titleClick(index) {
         this.currentIndex = index;
         this.$emit("titleClick", this.currentIndex);
       },
+
+      /**
+       * 返回上一个路由页面
+       */
       backClick() {
-        this.$router.go(-1);
+        this.$router.back();
       }
     }
   };

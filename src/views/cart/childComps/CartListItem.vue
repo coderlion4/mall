@@ -4,7 +4,7 @@
       <check-button @click.native="checkedChange" :is-checked="itemInfo.checked" />
     </div>
     <div class="item-img">
-      <img v-lazy="itemInfo.image" alt="商品图片">
+      <img v-lazy="itemInfo.image" alt="">
     </div>
     <div class="item-info">
       <div class="item-title">{{itemInfo.title}}</div>
@@ -46,10 +46,16 @@
       CheckButton
     },
     computed: {
-
+      /**
+       * 控制单品最小数量
+       */
       isDisabledDecrement() {
         return this.itemInfo.count <= 1;
       },
+
+      /**
+       * 控制单品最大数量
+       */
       isDisabledIncrement() {
         return this.itemInfo.count >= 200;
       }
@@ -62,19 +68,23 @@
         "subCount",
         "changeCount"
       ]),
+
       checkedChange() {
         this.itemInfo.checked = !this.itemInfo.checked;
       },
+
       decrement() {
         this.subCount(this.itemInfo).then(res => { }, err => {
           this.$toast.show(err);
         });
       },
+
       increment() {
         this.addCount(this.itemInfo).then(res => { }, err => {
           this.$toast.show(err);
         })
       },
+
       inputBlur(inputDom) {
         if (this.itemInfo.count == inputDom.value) {
           return;
@@ -87,6 +97,7 @@
         });
         inputDom.value = this.itemInfo.count;
       },
+
       deleteClick() {
         this.delCart(this.itemInfo).then(res => {
           this.$toast.show(res);
