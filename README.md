@@ -29,6 +29,21 @@ npm run serve // 运行 mall
 npm run build  // 项目打包
 ```
 
+##### 部署时nginx的配置(hisotry模式下在vue路由中刷新导致404问题)
+
+```base64
+location / {
+  try_files $uri $uri/ @router;   #需要指向下面的@router否则会出现vue的路由在nginx中刷新出现404
+  index  index.html index.htm;
+}
+    
+location @router {
+  rewrite ^.*$ /index.html last;  #/index.html前面有空格
+}
+```
+
+<a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html">来自Vue Router</a>
+
 ### 技术栈
 
 - Vue2.0 (核心框架)
@@ -43,6 +58,7 @@ npm run build  // 项目打包
 - Better-Scroll (让移动端的滚动更为流畅)
 - FastClick (解决移动端点击300ms延迟)
 - Vue-Lazyload (懒加载工具)
+- PostCss (css代码转化工具)
 
 ### 页面欣赏
 
