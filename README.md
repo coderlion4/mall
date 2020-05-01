@@ -4,7 +4,7 @@
 
 > api: 请联系wechat账号: **coderwhy001**
 
-> <a href="http://129.204.186.164" target="_blank">在线演示地址</a>
+> <a href="http://mall.itzjh.cn" target="_blank">在线演示地址</a>
 
 > <a href="https://www.itzjh.cn/images/wechat.jpg" target="_blank">联系作者</a>
 
