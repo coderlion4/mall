@@ -6,8 +6,7 @@
 
 > <a href="http://129.204.186.164" target="_blank">在线演示地址</a>
 
-> 联系作者
-> ![image](https://github.com/jrzjh4/mall/blob/master/projectImage/code.JPG)
+> <a href="https://www.itzjh.cn/images/wechat.jpg" target="_blank">联系作者</a>
 
 ### 免责声明
 
