@@ -1,18 +1,16 @@
 # mall V1.1.0
 
-模仿**蘑菇街**的一个移动端商城
-
-> api: 请联系wechat账号: **coderwhy001**
+> API: 请联系 wechat 账号: **coderwhy001**
 
 > <a href="http://mall.itzjh.cn" target="_blank">在线演示地址</a>
 
-> <a href="https://www.itzjh.cn/images/wechat.jpg" target="_blank">联系作者</a>
+> <a href="https://www.itzjh.cn/images/wechat.jpeg" target="_blank">联系作者</a>
 
 ### 免责声明
 
-- 本站仅供学习, 不做任何盈利目的, 资源来自**coderwhy001**
+- 本站仅供学习, 不做任何盈利目的, API 来自 **coderwhy001**
 
-- 在代码中将隐藏部分api接口, 需要最新接口请联系**coderwhy001**
+- 在代码中将隐藏部分 API 接口, 需要最新接口请联系 **coderwhy001**
 
 ### 如何安装与使用
 
@@ -96,9 +94,3 @@ location @router {
 #### V1.0.0 (2020.03.28）
 
 - 发布正式版
-
-
-### 其他说明
-
-- 跟随**coderwhy**老师完成的小项目
-- 感谢**coderwhy**, **尤大**以及在我遇到问题时热心帮助的**小伙伴们~**
