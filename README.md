@@ -2,9 +2,9 @@
 
 > API: 请联系 wechat 账号: **coderwhy001**
 
-> <a href="http://mall.itzjh.cn" target="_blank">在线演示地址</a>
+> <a href="http://mall.coderlion.com" target="_blank">在线演示地址</a>
 
-> <a href="https://www.itzjh.cn/images/wechat.jpeg" target="_blank">联系作者</a>
+> <a href="https://www.coderlion.com/images/wechat.jpeg" target="_blank">联系作者</a>
 
 ### 免责声明
 
@@ -15,7 +15,7 @@
 ### 如何安装与使用
 
 ```base
-git clone https://github.com/jrzjh4/mall.git  //下载 mall
+git clone https://github.com/coderlion4/mall.git  //下载 mall
 
 cd mall // 进入 mall目录
 
@@ -28,7 +28,7 @@ npm run build  // 项目打包
 
 ##### 部署时nginx的配置(hisotry模式下在vue路由中刷新导致404问题)
 
-```base64
+```shell
 location / {
   try_files $uri $uri/ @router;   #需要指向下面的@router否则会出现vue的路由在nginx中刷新出现404
   index  index.html index.htm;
@@ -39,7 +39,7 @@ location @router {
 }
 ```
 
-<a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html">来自Vue Router</a>
+<a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html">更多服务器配置</a>
 
 ### 技术栈
 
@@ -60,27 +60,27 @@ location @router {
 ### 页面欣赏
 
 ##### 首页
-![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1004.PNG)
+![image](https://github.com/coderlion4/mall/blob/master/projectImage/IMG_1004.PNG)
 
-![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1005.PNG)
+![image](https://github.com/coderlion4/mall/blob/master/projectImage/IMG_1005.PNG)
 
 ##### 详情页
 
-![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1006.PNG)
+![image](https://github.com/coderlion4/mall/blob/master/projectImage/IMG_1006.PNG)
 
 ##### 分类
 
-![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1007.PNG)
+![image](https://github.com/coderlion4/mall/blob/master/projectImage/IMG_1007.PNG)
 
-![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1008.PNG)
+![image](https://github.com/coderlion4/mall/blob/master/projectImage/IMG_1008.PNG)
 
 ##### 购物车
 
-![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1009.PNG)
+![image](https://github.com/coderlion4/mall/blob/master/projectImage/IMG_1009.PNG)
 
 ##### 我的
 
-![image](https://github.com/jrzjh4/mall/blob/master/projectImage/IMG_1010.PNG)
+![image](https://github.com/coderlion4/mall/blob/master/projectImage/IMG_1010.PNG)
 
 ### 更新说明
 
