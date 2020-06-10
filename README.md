@@ -4,8 +4,6 @@
 
 > <a href="http://mall.coderlion.com" target="_blank">在线演示地址</a>
 
-> <a href="https://www.coderlion.com/images/wechat.jpeg" target="_blank">联系作者</a>
-
 ### 免责声明
 
 - 本站仅供学习, 不做任何盈利目的, API 来自 **coderwhy001**
