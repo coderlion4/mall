@@ -1,12 +1,8 @@
 # mall V1.1.0
 
-> API: 请联系 wechat 账号: **coderwhy001**
-
 > <a href="http://mall.coderlion.com" target="_blank">在线演示地址</a>
 
 ### 免责声明
-
-- 本站仅供学习, 不做任何盈利目的, API 来自 **coderwhy001**
 
 - 在代码中将隐藏部分 API 接口, 需要最新接口请联系 **coderwhy001**
 
